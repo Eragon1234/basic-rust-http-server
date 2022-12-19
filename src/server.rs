@@ -26,12 +26,12 @@ impl Server {
                             println!("Received a request: {}", String::from_utf8_lossy(&buffer));
                         }
                         Err(e) => {
-                            println!("Error: {}", e);
+                            println!("Failed to read from connection: {}", e);
                         }
                     }
                 }
                 Err(e) => {
-                    println!("Error: {}", e);
+                    println!("Failed to establish a connection: {}", e);
                 }
             }
         }
