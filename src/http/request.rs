@@ -9,6 +9,7 @@ use crate::http::{method, QueryString};
 
 use super::method::Method;
 
+#[derive(Debug)]
 pub struct Request<'buf> {
     method: Method,
     path: &'buf str,

@@ -1,5 +1,6 @@
 use std::io::Read;
 use std::net::TcpListener;
+
 use crate::http::Request;
 
 pub struct Server {
@@ -28,7 +29,7 @@ impl Server {
 
                             match Request::try_from(&buffer[..]) {
                                 Ok(request) => {
-
+                                    dbg!(request);
                                 }
                                 Err(err) => {
                                     println!("Failed to parse Request: {}", err);
