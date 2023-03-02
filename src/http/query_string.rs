@@ -1,15 +1,14 @@
 use std::collections::HashMap;
-use std::str::FromStr;
 
 #[derive(Debug)]
 pub struct QueryString<'buf> {
-    data: HashMap<&'buf str, Value<'buf>>
+    data: HashMap<&'buf str, Value<'buf>>,
 }
 
 #[derive(Debug)]
 pub enum Value<'buf> {
     Single(&'buf str),
-    Multiple(Vec<&'buf str>)
+    Multiple(Vec<&'buf str>),
 }
 
 impl<'buf> QueryString<'buf> {
@@ -35,12 +34,12 @@ impl<'buf> From<&'buf str> for QueryString<'buf> {
                 .and_modify(|existing| match existing {
                     Value::Single(prev) => {
                         *existing = Value::Multiple(vec![prev, value]);
-                    },
+                    }
                     Value::Multiple(vec) => vec.push(value)
                 })
                 .or_insert(Value::Single(value));
         }
 
-        QueryString{ data }
+        QueryString { data }
     }
 }
