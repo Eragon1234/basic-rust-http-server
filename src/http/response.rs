@@ -1,4 +1,3 @@
-use std::fmt::{Display, Formatter, Result as FmtResult};
 use std::io::{Result as IoResult, Write};
 
 use crate::http::status_code::StatusCode;
@@ -9,10 +8,10 @@ pub struct Response {
 }
 
 impl Response {
-    pub fn new(status_code: StatusCode, body: Option<&str>) -> Self {
+    pub fn new(status_code: StatusCode, body: Option<String>) -> Self {
         Self {
             status_code,
-            body: body.map(|s| s.to_string()),
+            body,
         }
     }
 
